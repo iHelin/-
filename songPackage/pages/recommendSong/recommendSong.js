@@ -36,10 +36,10 @@ Page({
       day: new Date().getDate(),
       month: new Date().getMonth() + 1
     })
-  
+
     // 获取每日推荐的数据
     this.getRecommendList();
-    
+
     // 订阅来自songDetail页面发布的消息
     PubSub.subscribe('switchType', (msg, type) => {
       let {recommendList, index} = this.data;
@@ -50,19 +50,19 @@ Page({
         (index === recommendList.length - 1) && (index = -1);
         index += 1;
       }
-      
+
       // 更新下标
       this.setData({
         index
       })
-      
+
       let musicId = recommendList[index].id;
       // 将musicId回传给songDetail页面
       PubSub.publish('musicId', musicId)
-      
+
     });
   },
-  
+
   // 获取用户每日推荐数据
   async getRecommendList(){
     let recommendListData = await request('/recommend/songs');
@@ -70,7 +70,7 @@ Page({
       recommendList: recommendListData.recommend
     })
   },
-  
+
   // 跳转至songDetail页面
   toSongDetail(event){
     let {song, index} = event.currentTarget.dataset;
@@ -80,8 +80,7 @@ Page({
     // 路由跳转传参： query参数
     wx.navigateTo({
       // 不能直接将song对象作为参数传递，长度过长，会被自动截取掉
-      // url: '/pages/songDetail/songDetail?songPackage=' + JSON.stringify(songPackage)
-      url: '/songPackage/pages/songDetail/songDetail?musicId=' + song.id
+      url: '/pages/songDetail/songDetail?musicId=' + song.id
     })
   },
 
