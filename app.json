@@ -4,7 +4,9 @@
     "pages/search/search",
     "pages/video/video",
     "pages/login/login",
-    "pages/personal/personal"
+    "pages/personal/personal",
+    "pages/recommendSong/recommendSong",
+        "pages/songDetail/songDetail"
   ],
   "style": "v2",
   "sitemapLocation": "sitemap.json",
@@ -41,19 +43,6 @@
   "requiredBackgroundModes": [
     "audio"
   ],
-  "subpackages": [
-    {
-      "root": "songPackage",
-      "pages": [
-        "pages/recommendSong/recommendSong",
-        "pages/songDetail/songDetail"
-      ],
-      "independent": true
-    }
-  ],
   "preloadRule": {
-    "pages/index/index": {
-      "packages": ["songPackage"]
-    }
   }
 }
