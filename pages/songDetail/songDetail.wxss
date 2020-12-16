@@ -48,8 +48,8 @@ page {
 }
 
 .discAnimation {
-  animation: disc 4s linear infinite;
-  animation-delay: 1s;
+    animation: disc 5s linear infinite;
+    animation-delay: 1s;
 }
 
 /*
@@ -99,7 +99,7 @@ page {
   position: absolute;
   bottom: 40rpx;
   left: 0;
-  border-top: 1rpx solid #fff;
+    /* border-top: 1rpx solid #fff; */
   width: 100%;
   display: flex;
 

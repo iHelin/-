@@ -14,7 +14,7 @@
     </view>
     <view class="navItem" bindtap="toOther">
       <text class="iconfont icon-gedan1"></text>
-      <text>Other页面</text>
+      <text>私人FM</text>
     </view>
     <view class="navItem">
       <text class="iconfont icon-icon-ranking"></text>

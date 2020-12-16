@@ -13,7 +13,6 @@
 /* 五个图标导航区域 */
 .navContainer {
   display: flex;
-
 }
 
 .navItem {

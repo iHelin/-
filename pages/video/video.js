@@ -1,4 +1,5 @@
 import request from '../../utils/request'
+
 Page({
 
   /**
@@ -19,9 +20,9 @@ Page({
   onLoad: function (options) {
     // 获取导航数据
     this.getVideoGroupListData();
-   
+
   },
-  
+
   // 获取导航数据
   async getVideoGroupListData(){
     let videoGroupListData = await request('/video/group/list');
@@ -29,8 +30,8 @@ Page({
       videoGroupList: videoGroupListData.data.slice(0, 14),
       navId: videoGroupListData.data[0].id
     })
-  
-    // 获取视频列表数据
+
+      // 获取视频列表数据
     this.getVideoList(this.data.navId);
   },
   // 获取视频列表数据
@@ -41,9 +42,9 @@ Page({
     let videoListData = await request('/video/group', {id: navId});
     // 关闭消息提示框
     wx.hideLoading();
-    
-    
-    let index = 0;
+
+
+      let index = 0;
     let videoList = videoListData.datas.map(item => {
       item.id = index++;
       return item;
@@ -53,8 +54,8 @@ Page({
       isTriggered: false // 关闭下拉刷新
     })
   },
-  
-  // 点击切换导航的回调
+
+    // 点击切换导航的回调
   changeNav(event){
     let navId = event.currentTarget.id; // 通过id向event传参的时候如果传的是number会自动转换成string
     // let navId = event.currentTarget.dataset.id;
@@ -69,8 +70,8 @@ Page({
     // 动态获取当前导航对应的视频数据
     this.getVideoList(this.data.navId);
   },
-  
-  // 点击播放/继续播放的回调
+
+    // 点击播放/继续播放的回调
   handlePlay(event){
     /*
       问题： 多个视频同时播放的问题
@@ -84,13 +85,13 @@ Page({
     *   1. 需要创建多个对象的场景下，通过一个变量接收，始终保持只有一个对象，
     *   2. 节省内存空间
     * */
-    
-    let vid = event.currentTarget.id;
+
+      let vid = event.currentTarget.id;
     // 关闭上一个播放的视频
     // this.vid !== vid && this.videoContext && this.videoContext.stop();
     // this.vid = vid;
-    
-    // 更新data中videoId的状态数据
+
+      // 更新data中videoId的状态数据
     this.setData({
       videoId: vid
     })
@@ -105,8 +106,8 @@ Page({
     this.videoContext.play();
     // this.videoContext.stop();
   },
-  
-  // 监听视频播放进度的回调
+
+    // 监听视频播放进度的回调
   handleTimeUpdate(event){
     let videoTimeObj = {vid: event.currentTarget.id, currentTime: event.detail.currentTime};
     let {videoUpdateTime} = this.data;
@@ -127,8 +128,8 @@ Page({
       videoUpdateTime
     })
   },
-  
-  // 视频播放结束调用的回调
+
+    // 视频播放结束调用的回调
   handleEnded(event){
     // 移除记录播放时长数组中当前视频的对象
     let {videoUpdateTime} = this.data;
@@ -137,22 +138,22 @@ Page({
       videoUpdateTime
     })
   },
-  
-  // 自定义下拉刷新的回调： scroll-view
+
+    // 自定义下拉刷新的回调： scroll-view
   handleRefresher(){
     console.log('scroll-view 下拉刷新');
     // 再次发请求，获取最新的视频列表数据
     this.getVideoList(this.data.navId);
   },
-  
-  // 自定义上拉触底的回调 scroll-view
+
+    // 自定义上拉触底的回调 scroll-view
   handleToLower(){
     console.log('scroll-view 上拉触底');
     // 数据分页： 1. 后端分页， 2. 前端分页
     console.log('发送请求 || 在前端截取最新的数据 追加到视频列表的后方');
     console.log('网易云音乐暂时没有提供分页的api');
-    
-    // let videoList = this.data.videoList;
+
+      // let videoList = this.data.videoList;
     // 将视频最新的数据更新原有视频列表数据中
     // videoList.push(...newVideoList);
     // this.setData({
@@ -217,15 +218,15 @@ Page({
       return {
         title: '来自button的转发',
         page: '/pages/video/video',
-        imageUrl: '/static/images/nvsheng.jpg'
+          imageUrl: ''
       }
     }else {
       return {
         title: '来自menu的转发',
         page: '/pages/video/video',
-        imageUrl: '/static/images/nvsheng.jpg'
+          imageUrl: ''
       }
     }
-    
+
   }
 })

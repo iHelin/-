@@ -23,7 +23,7 @@
           <text class="musicName">{{item.name}}</text>
           <text class="author">{{item.artists[0].name}}</text>
         </view>
-        <text class="iconfont icon-gengduo"></text>
+        <text class="iconfont icon-bofang"></text>
       </view>
     </scroll-view>
   </view>
