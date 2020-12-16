@@ -17,7 +17,7 @@ Page({
 
     onLoad: function (options) {
         let musicId = options.musicId;
-        let musicIndex = options.musicIndex >>> 0;
+        let musicIndex = options.musicIndex>>>0;
         this.setData({
             musicId,
             musicIndex
@@ -67,7 +67,7 @@ Page({
         this.doSwitch(type);
     },
 
-    doSwitch(type) {
+    doSwitch(type){
         // 自动切换至下一首音乐，并且自动播放
         // 将实时进度条的长度还原成 0；时间还原成 0；
         this.setData({
