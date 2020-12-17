@@ -1,8 +1,3 @@
-@import "/static/iconfont/iconfont.wxss";
-page {
-  height: 100%;
-}
-
 .recommendSongContainer .header {
   position: relative;
   width: 100%;
